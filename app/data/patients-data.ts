@@ -1,6 +1,6 @@
 import { nanoid } from 'nanoid';
 
-type Diagnosis = 
+export type Diagnosis = 
   | "Hypertension" 
   | "Diabetes" 
   | "Asthma" 

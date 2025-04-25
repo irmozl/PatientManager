@@ -22,10 +22,10 @@ export default function PaginationArea({ table }: { table: TableType }) {
 	const { pageIndex } = table.getState().pagination;
 
 	return (
-		<div className={`flex items-center justify-between px-6 ${bgColor} relative border w-full h-[84px] overflow-hidden`}>
+		<div className={`sm:flex items-center justify-between px-3 py-4 sm:py-5 sm:px-6 ${bgColor} relative border rounded-b-lg w-full h-full`}>
 			<PaginationSelection/>
-			<div className="flex items-center gap-6">
-				<span className="text-sm text-gray-500">
+			<div className="flex items-center gap-6 sm:mt-0 mt-3 ">
+				<span className="sm:text-sm text-xs  text-gray-500">
 					Page {pageIndex + 1} of {table.getPageCount()}
 				</span>
 				<div className="flex items-center justify-end space-x-2">

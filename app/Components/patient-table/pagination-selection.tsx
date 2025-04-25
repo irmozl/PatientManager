@@ -9,7 +9,7 @@ import {
 export default function PaginationSelection() {
 	return (
 		<div className="flex items-center gap-2">
-			<span className="text-sm text-gray-500">Rows Per Page</span>
+			<span className="sm:text-sm text-xs text-gray-500">Rows Per Page</span>
 			<Select >
 				<SelectTrigger className="w-[90px]">
 					<SelectValue placeholder="4" />

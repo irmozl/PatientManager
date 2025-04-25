@@ -3,6 +3,8 @@ import { Card } from "@/components/ui/card";
 import { FaMale } from "react-icons/fa";
 import { FaFemale } from "react-icons/fa";
 import { UpdatedPatient } from "./patients-cards-area";
+import { MdDeleteForever } from "react-icons/md";
+import { FaEdit } from "react-icons/fa";
 
 export default function PatientCard({ singlePatient }: { singlePatient: UpdatedPatient }) {
 	function renderGender(gender: "Female" | "Male" ){
@@ -31,9 +33,17 @@ export default function PatientCard({ singlePatient }: { singlePatient: UpdatedP
 						</Badge>
 					</div>
 				</div>
+				<div className="flex gap-2 items-start">
+					<button className="text-primary hover:text-primary/80">
+						<FaEdit className="text-lg" />
+					</button>
+					<button className="text-red-500 hover:text-red-600">
+						<MdDeleteForever className="text-xl" />
+					</button>
+				</div>
 			</div>
 
-			<ul className="text-sm text-gray-600 mt-7 flex flex-col gap-3">
+			<ul className="text-sm text-gray-600 flex flex-col gap-3 pl-10">
 				<li className="relative pl-5 before:absolute before:top-1/2 before:left-0 before:-translate-y-1/2 before:h-2 ">
 					<span className="font-smeibold">Appoint. Date:</span>
 					<span>{singlePatient.appointmentDate}</span>

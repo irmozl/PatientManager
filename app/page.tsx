@@ -40,7 +40,7 @@ export default function Home() {
 
   
   return (
-    <div className={`relative min-h-screen ${bgColor}`}>
+    <div className={`relative min-h-screen pb-10 md:pb-5  ${bgColor}`}>
       <Navbar />
       <StatisticCards />
       <SummaryAndButtonsArea />   

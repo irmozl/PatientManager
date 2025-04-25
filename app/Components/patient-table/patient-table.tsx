@@ -79,7 +79,7 @@ export default function PatientTable({
 	}
 
 	return (
-		<div className="px-6 mt-10">
+		<div className="px-6 mt-5">
 			<DataTable columns={columns} table={table} />
 			 <PaginationArea table={table} /> 
 		</div>

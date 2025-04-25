@@ -49,7 +49,7 @@ const getMostCommonDiagnosis = () => {
 
 function SingleStatisticCard ({title, value, icon} : StatisticCardProps) {
     return (
-        <Card className="flex flex-row items-center gap-5 p-4 shadow-none border-none mt-9">
+        <Card className="flex flex-row items-center gap-5 p-4 shadow-none border-none md:mt-9 mt-5">
             <div className="rounded-md size-12 bg-primary flex items-center justify-center">
                 <div className="text-secondary text-2xl ">{icon}</div>
             </div>
@@ -84,7 +84,7 @@ function StatisticCards() {
     ]
 
     return (
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 px-5 mt-5">
+        <div className="grid grid-cols-1 md:grid-cols-3 md:gap-10 px-5 md:mt-5">
             {statistics.map((statistic, index) => (
                 <SingleStatisticCard key={index} {...statistic} />
             ))}

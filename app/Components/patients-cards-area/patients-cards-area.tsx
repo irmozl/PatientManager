@@ -54,7 +54,7 @@ export default function PatientCardArea({
 	return (
 		<div className="px-6 pb-5">
 			{sorting.length > 0 && <RenderSortingTag />}
-			<div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-11 mb-8 gap-4">
+			<div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-5 mb-8 gap-4">
 				{sortedPatients.map((singlePatient, index) => (
 					<PatientCard key={index} singlePatient={singlePatient} />
 				))}

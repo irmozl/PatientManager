@@ -4,8 +4,8 @@ import { Badge } from "@/components/ui/badge"
 import { Checkbox } from "@/components/ui/checkbox"
 import { ColumnDef, Column } from "@tanstack/react-table"
 
-import { MdMan4 } from "react-icons/md"
-import { FaFemale } from "react-icons/fa"
+import { MdDeleteForever, MdMan4 } from "react-icons/md"
+import { FaEdit, FaFemale } from "react-icons/fa"
 import { CheckedState } from "@radix-ui/react-checkbox"
 import { Patient } from "@/app/data/patients-data"
 import { IoMdArrowUp, IoMdArrowDown } from "react-icons/io"
@@ -129,8 +129,18 @@ export const columns: ColumnDef<Patient>[] = [
   },
   {
 	accessorKey: "actions",
-	header: "",
-
+	cell: () => {
+		return (
+			<div className="flex gap-2 items-center">
+				<button className="text-primary hover:text-primary/80">
+					<FaEdit className="text-lg" />
+				</button>
+				<button className="text-red-500 hover:text-red-600">
+					<MdDeleteForever className="text-xl" />
+				</button>
+			</div>
+		)
+	},
 	id: "actions",
   },
 ]

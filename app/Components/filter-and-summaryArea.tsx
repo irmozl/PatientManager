@@ -4,7 +4,7 @@ import {
   usePatientViewStore,
 } from "../Hooks/usePatientViewStore";
 import { GenderDropdown } from "./dropdowns/gender-dropdown";
-import { FaList } from "react-icons/fa";
+import { FaList,FaTrash } from "react-icons/fa";
 import { IoGrid } from "react-icons/io5";
 
 function SummaryAndButtonsArea() {
@@ -42,6 +42,10 @@ function IconToggle() {
       onValueChange={handleToggle}
       className="flex gap-2"
     >
+<ToggleGroupItem value="list">
+<FaTrash className="text-gray-500 hover:text-red-500" />
+      </ToggleGroupItem>
+
       <ToggleGroupItem value="list">
         <FaList
           className={`${

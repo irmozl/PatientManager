@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Diagnosis, Patient } from "@/app/data/patients-data";
 import usePatientDataStore from "@/app/Hooks/usePatientDataStore";
-import { nanoid } from "nanoid";
+//import { nanoid } from "nanoid";
 import { useTheme } from "next-themes"
 
 const AddPatient = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) => {
@@ -10,24 +10,38 @@ const AddPatient = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
   const [diagnosis, setDiagnosis] = useState<"Hypertension" | "Diabetes" | "Asthma" | "Heart Disease" | "Arthritis" | "Allergies">("Hypertension");
   const [gender, setGender] = useState<"Male" | "Female">("Male");
   
+  const [loading, setLoading] = useState(false);
+const [error, setError] = useState("");
   const { addPatient } = usePatientDataStore();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setLoading(true);
+  setError("");
     
-    const newPatient: Patient = {
-      id: nanoid(),
+  try {
+    const newPatient: Omit<Patient, 'id'> = {
       firstName,
       lastName,
       diagnosis,
       gender,
-      appointmentDate: new Date().toDateString(),
-      lastVisit: new Date().toDateString(),
+      appointmentDate: new Date().toISOString(),
+      lastVisit: new Date().toISOString(),
     };
 
-    await addPatient(newPatient);
-    onClose(); 
-  };
+    await addPatient(newPatient as Patient);
+    setFirstName("");
+    setLastName("");
+    setDiagnosis("Hypertension");
+    setGender("Male");
+    onClose();
+    window.location.reload();
+  } catch {
+    setError("Failed to add patient. Please try again.");
+  } finally {
+    setLoading(false);
+  }
+};
 
   if (!isOpen) return null;
 
@@ -38,6 +52,11 @@ const AddPatient = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
   return (
     <div className={`fixed inset-0 flex items-center bg-black/50 justify-center z-50`} >
       <div className={`${bgColor} p-6 rounded-lg shadow-lg max-w-sm w-full`}>
+      {error && <p className="text-red-500 text-sm mb-2">{error}</p>}
+
+<button type="submit" disabled={loading} className=" text-black p-2 rounded font-semibold">
+  {loading ? "Adding..." : ""}
+</button>
         <h2 className="text-xl mb-4 font-semibold">Add New Patient</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
